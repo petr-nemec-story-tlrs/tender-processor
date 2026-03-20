@@ -1,0 +1,12 @@
+{
+  "name": "tender-processor",
+  "version": "0.1.0",
+  "description": "End-to-end processing of social media tender briefs (RFPs/pitches/výběrová řízení). Analyzes a PDF brief, runs 5 parallel research agents, synthesizes 3 strategic insights, and generates branded deliverables: debrief questions DOCX, internal brief DOCX, and pitch presentation PPTX.",
+  "author": {
+    "name": "Petr Němec",
+    "url": "https://github.com/petrnemec"
+  },
+  "repository": "https://github.com/petrnemec/tender-processor",
+  "license": "MIT",
+  "keywords": ["tender", "pitch", "RFP", "social media", "agency", "story-tlrs"]
+}
