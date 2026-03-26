@@ -80,6 +80,36 @@ Chapter names are always in ENGLISH (all caps on chapter divider slides).
 
 Petr will manually append "Stories We Told" and "(Y)our Protagonists" sections — never generate those.
 
+### Mandatory Slide Type Planning Table
+
+**Before writing any XML, produce a complete slide plan in this format:**
+
+| # | Type | Chapter | Content summary |
+|---|------|---------|-----------------|
+| 1 | Cover | — | Client name + service bubbles |
+| 2 | TOC/Prolog | — | Chapter list |
+| 3 | Chapter Divider | Ch1 | Chapter title |
+| 4 | [type] | Ch1 | [content] |
+| … | | | |
+
+**Then validate against these rules — DO NOT proceed to Step 3 until all pass:**
+
+☐ **Max 3 consecutive Text-Heavy slides.** Count consecutive Text-Heavy runs. Any run > 3 = insert a visual break type before continuing.
+
+☐ **Data/numbers → Stats slide, not bullet text.** If any slide lists 3+ metrics in body text, convert to Stats (3-column pills or 2×2 grid).
+
+☐ **Competitor comparison → Table/Comparison Grid.** If a slide describes competitors in prose, convert to Table.
+
+☐ **3 parallel process steps/tips → Tips/Callout Box Row.** If a slide lists exactly 3 parallel items, convert to Tips row.
+
+☐ **Strong single claim → Big Quote or Pull Quote.** If a slide exists only to make one statement, convert to Quote type.
+
+☐ **Section transitions.** After 2+ dense content slides, consider a Colored Section Divider or Subchapter Divider to reset visual rhythm.
+
+☐ **Implementation phases → Timeline/Gantt Strip.** If a slide describes a timeline in prose, convert.
+
+Only after all checkboxes pass: proceed to Step 3 (Write Slide XMLs).
+
 ### Step 3 — Write Slide XMLs
 
 For each slide, modify or create the XML based on the slide type. Use patterns from `references/slide-catalog.md`.
