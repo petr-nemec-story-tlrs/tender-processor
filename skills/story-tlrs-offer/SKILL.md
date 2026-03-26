@@ -142,7 +142,50 @@ Write each slide's XML by editing the corresponding file under `extracted/ppt/sl
 
 For slides beyond the template count (if deck needs more than 12 slides), copy an existing slide XML and update its content. Make sure `extracted/ppt/presentation.xml` references any new slides.
 
-### Step 5 — Pack and Save
+### Step 5 — Validate XML
+
+**MANDATORY before packing.** Run XML validation on every slide file. If any file fails, fix it before proceeding.
+
+```bash
+cd "$WORK/extracted"
+python3 -c "
+import xml.etree.ElementTree as ET
+import os, sys
+
+errors = []
+for root_dir, dirs, files in os.walk('ppt/slides'):
+    for f in sorted(files):
+        if f.endswith('.xml') and not root_dir.endswith('_rels'):
+            path = os.path.join(root_dir, f)
+            try:
+                ET.parse(path)
+            except ET.ParseError as e:
+                print(f'ERROR: {path} — {e}')
+                errors.append((path, str(e)))
+
+for p in ['ppt/presentation.xml', '[Content_Types].xml', 'ppt/_rels/presentation.xml.rels']:
+    try:
+        ET.parse(p)
+    except ET.ParseError as e:
+        print(f'ERROR: {p} — {e}')
+        errors.append((p, str(e)))
+
+if errors:
+    print(f'\n{len(errors)} XML error(s) found. FIX BEFORE PACKING.')
+    sys.exit(1)
+else:
+    print(f'All XML files valid.')
+"
+```
+
+If errors are found:
+1. Read the broken file around the reported position
+2. Fix the XML (common issues: missing `<` in closing tags, unclosed elements, unescaped `&` in text)
+3. Re-run validation until all files pass
+
+**Do NOT proceed to Step 6 until validation passes with zero errors.**
+
+### Step 6 — Pack and Save
 
 ```bash
 cd "$WORK/extracted"
